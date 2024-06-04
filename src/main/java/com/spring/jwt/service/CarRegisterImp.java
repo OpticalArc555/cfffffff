@@ -14,6 +14,8 @@ import com.spring.jwt.repository.CarRepo;
 import com.spring.jwt.repository.DealerRepository;
 import com.spring.jwt.repository.PhotoRepo;
 import jakarta.persistence.criteria.Predicate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,6 +33,9 @@ public class CarRegisterImp implements ICarRegister {
     @Autowired
     private CarRepo carRepo;
 
+    private static final Logger logger = LoggerFactory.getLogger(CarRegisterImp.class);
+
+
     @Autowired
     private DealerRepository dealerRepo;
     @Autowired
@@ -46,14 +51,14 @@ public class CarRegisterImp implements ICarRegister {
 //        List<Car> dealerCar = new ArrayList<>();
 
 
-              Car car =new Car(carDto);
+        Car car =new Car(carDto);
 //              car.setDealer(dealer);
 //              dealerCar=dealer.getCars();
 
 //              dealer.setCars(dealerCar);
 //              dealerRepo.save(dealer);
-              carRepo.save(car);
-              return "car Added";
+        carRepo.save(car);
+        return "car Added";
 
 
 
@@ -102,8 +107,7 @@ public class CarRegisterImp implements ICarRegister {
 
         carRepo.save(car);
         return "Car Updated"+id;
-     }
-
+    }
 
     @Override
     public List<CarDto> getAllCarsWithPages(int pageNo, int pageSize) {
@@ -139,6 +143,7 @@ public class CarRegisterImp implements ICarRegister {
 
         return listOfCarDto;
     }
+
 
     @Override
     public String deleteCar(int carId, int dealerId) {
@@ -230,6 +235,7 @@ public class CarRegisterImp implements ICarRegister {
         carDto.setCarId(carId);
         return carDto;
     }
+
     @Override
     public List<CarDto> getDetails(int dealerId, Status carStatus, int pageNo) {
         if (!dealerExists(dealerId)) {
@@ -260,7 +266,6 @@ public class CarRegisterImp implements ICarRegister {
 
         return listOfCarDto;
     }
-
 
     private boolean dealerExists(int dealerId) {
         return dealerRepo.existsById(dealerId);

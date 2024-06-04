@@ -79,6 +79,7 @@ CarController {
     }
 
 
+
     @DeleteMapping("/removeCar")
     public ResponseEntity<ResponseDto> deleteCar(@RequestParam int carId, @RequestParam int dealerId){
         try {
