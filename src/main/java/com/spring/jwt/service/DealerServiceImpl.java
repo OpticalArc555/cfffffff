@@ -145,6 +145,7 @@ public class DealerServiceImpl implements DealerService {
         dealerDto.setArea(dealer.getArea());
         dealerDto.setCity(dealer.getCity());
         dealerDto.setFirstName(dealer.getFirstname());
+        dealerDto.setStatus(dealer.getStatus());
         dealerDto.setLastName(dealer.getLastName());
         dealerDto.setMobileNo(dealer.getMobileNo());
         dealerDto.setShopName(dealer.getShopName());
