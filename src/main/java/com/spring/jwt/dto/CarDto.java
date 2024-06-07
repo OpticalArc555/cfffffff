@@ -23,8 +23,6 @@ public class CarDto {
 
     private String area;
 
-    private String bodyType;
-
     private String brand;
 
     private Boolean carInsurance;
@@ -43,8 +41,6 @@ public class CarDto {
 
     private String model;
 
-    private int noOfWheels;
-
     private int ownerSerial;
 
     private Boolean powerWindowFeature;
@@ -59,13 +55,18 @@ public class CarDto {
 
     private String transmission;
 
-    private String tyre;
+    private String title;
+
+    private String variant;
+
+    private String carInsuranceDate;
 
     private int year;
 
     private DealerDto dealer;
 
     private int dealer_id;
+
     private LocalDate date;
 
 
@@ -74,7 +75,6 @@ public class CarDto {
         this.acFeature = car.getAcFeature();
         this.musicFeature = car.getMusicFeature();
         this.area = car.getArea();
-        this.bodyType =car.getBodyType();
         this.brand = car.getBrand();
         this.carInsurance = car.getCarInsurance();
         this.carStatus = car.getCarStatus();
@@ -84,18 +84,18 @@ public class CarDto {
         this.fuelType =car.getFuelType();
         this.kmDriven = car.getKmDriven();
         this.model=car.getModel();
-        this.noOfWheels = car.getNoOfWheels();
         this.ownerSerial = car.getOwnerSerial();
         this.powerWindowFeature = car.getPowerWindowFeature();
         this.price = car.getPrice();
         this.rearParkingCameraFeature = car.getRearParkingCameraFeature();
         this.registration = car.getRegistration();
-        this.safetyDescription = car.getSafetyDescription();
         this.transmission = car.getTransmission();
-        this.tyre = car.getTyre();
         this.year = car.getYear();
         this.dealer_id=car.getDealerId();
         this.date = car.getDate();
+        this.title = car.getTitle();
+        this.variant = car.getVariant();
+        this.carInsuranceDate = car.getCarInsuranceDate();
 
     }
 }

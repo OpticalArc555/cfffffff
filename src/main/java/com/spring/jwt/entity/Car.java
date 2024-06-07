@@ -32,14 +32,17 @@ public class Car {
     @Column(name = "area", length = 45)
     private String area;
 
-    @Column(name = "`body type`", length = 45)
-    private String bodyType;
+    @Column(name = "variant", length = 45)
+    private String variant;
 
     @Column(name = "brand", nullable = false, length = 45)
     private String brand;
 
     @Column(name = "car_insurance")
     private Boolean carInsurance;
+
+    @Column(name = "car_insurance_date")
+    private String carInsuranceDate;
 
     @Enumerated(EnumType.STRING)
     private Status carStatus;
@@ -62,9 +65,6 @@ public class Car {
     @Column(name = "model", length = 45)
     private String model;
 
-    @Column(name = "no_of_wheels")
-    private int noOfWheels;
-
     @Column(name = "owner_serial")
     private int ownerSerial;
 
@@ -80,14 +80,12 @@ public class Car {
     @Column(name = "registration", length = 45)
     private String registration;
 
-    @Column(name = "safety_description", length = 250)
-    private String safetyDescription;
+    @Column(name = "title", length = 250)
+    private String title;
 
     @Column(name = "transmission", length = 45)
     private String transmission;
 
-    @Column(name = "tyre", length = 45)
-    private String tyre;
 
     @Column(name = "year")
     private int year;
@@ -104,12 +102,12 @@ public class Car {
 
     @OneToMany(mappedBy = "carCar")
     private Set<PendingBooking> pendingBookings = new LinkedHashSet<>();
+
     public Car(CarDto carDto){
         this.acFeature = carDto.getAcFeature();
         this.date=carDto.getDate();
         this.musicFeature =carDto.getMusicFeature();
         this.area =carDto.getArea();
-        this.bodyType = carDto.getBodyType();
         this.brand = carDto.getBrand();
         this.carInsurance = carDto.getCarInsurance();
         this.carStatus = carDto.getCarStatus();
@@ -119,17 +117,17 @@ public class Car {
         this.fuelType = carDto.getFuelType();
         this.kmDriven = carDto.getKmDriven();
         this.model = carDto.getModel();
-        this.noOfWheels = carDto.getNoOfWheels();
         this.ownerSerial = carDto.getOwnerSerial();
         this.powerWindowFeature = carDto.getPowerWindowFeature();
         this.price =carDto.getPrice();
         this.rearParkingCameraFeature = carDto.getRearParkingCameraFeature();
         this.registration = carDto.getRegistration();
-        this.safetyDescription = carDto.getSafetyDescription();
         this.transmission = carDto.getTransmission();
-        this.tyre = carDto.getTyre();
         this.year = carDto.getYear();
         this.dealerId=carDto.getDealer_id();
+        this.title=carDto.getTitle();
+        this.variant = carDto.getVariant();
+        this.carInsuranceDate = carDto.getCarInsuranceDate();
     }
 
 }
