@@ -10,6 +10,8 @@ import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,13 +28,19 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+
 @Slf4j
 public class JwtServiceImpl implements JwtService {
 
     private final JwtConfig jwtConfig;
 
     private final UserDetailsService userDetailsService;
+
+    @Autowired
+    public JwtServiceImpl(@Lazy JwtConfig jwtConfig, UserDetailsService userDetailsService) {
+        this.jwtConfig = jwtConfig;
+        this.userDetailsService = userDetailsService;
+    }
 
 
     @Override
@@ -142,7 +150,6 @@ public class JwtServiceImpl implements JwtService {
 
         return claims;
     }
-
 
 }
 
