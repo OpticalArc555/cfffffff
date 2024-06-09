@@ -104,7 +104,6 @@ public class DOUploadController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponceDto("unsuccess", String.valueOf(e)));
 
         } catch (IOException e) {
-
             System.err.println(e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponceDto("unsuccess", "Failed to upload image"));
         } catch (Exception e) {
