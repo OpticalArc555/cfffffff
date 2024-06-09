@@ -30,7 +30,7 @@ public class FilterServiceImpl implements FilterService {
     private DealerRepository dealerRepo;
 
     @Override
-    public List<CarDto> searchByFilter(FilterDto filterDto) {
+    public List<CarDto> searchByFilter(FilterDto filterDto, int pageNo) {
         Specification<Car> spec = (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -59,7 +59,8 @@ public class FilterServiceImpl implements FilterService {
             if (filterDto.getFuelType() != null && !filterDto.getFuelType().isEmpty()) {
                 predicates.add(criteriaBuilder.equal(root.get("fuelType"), filterDto.getFuelType()));
             }
-            Predicate statusPredicate = criteriaBuilder.or(
+
+            Predicate statusPredicate = criteriaBuilder. or (
                     criteriaBuilder.equal(root.get("carStatus"), Status.ACTIVE),
                     criteriaBuilder.equal(root.get("carStatus"), Status.PENDING)
             );
@@ -68,23 +69,23 @@ public class FilterServiceImpl implements FilterService {
             return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         };
 
-        List<Car> carList = carRepo.findAll(spec);
-        if (carList.isEmpty()) {
+
+        Pageable pageable = PageRequest.of(pageNo  -0, 10);
+        Page<Car> carPage = carRepo.findAll(spec, pageable);
+        if(carPage.isEmpty()){
             throw new PageNotFoundException("Page Not found");
         }
+        List<CarDto> listOfCarDto =new ArrayList<>();
 
-        List<CarDto> listOfCarDto = new ArrayList<>();
-        for (Car car : carList) {
-            CarDto carDto = new CarDto(car);
-            carDto.setCarId(car.getId());
+        for (int counter=0;counter<carPage.getContent().size();counter++){
+
+            CarDto carDto = new CarDto(carPage.getContent().get(counter));
+            carDto.setCarId(carPage.getContent().get(counter).getId());
             listOfCarDto.add(carDto);
         }
 
         return listOfCarDto;
     }
-
-
-
     @Override
     public List<CarDto> getAllCarsWithPages(int PageNo) {
         List<Car> listOfCar = carRepo.getPendingAndActivateCar();
@@ -108,9 +109,9 @@ public class FilterServiceImpl implements FilterService {
 
 
 
-            CarDto carDto = new CarDto(listOfCar.get(counter));
-            carDto.setCarId(listOfCar.get(counter).getId());
-            listOfCarDto.add(carDto);
+                CarDto carDto = new CarDto(listOfCar.get(counter));
+                carDto.setCarId(listOfCar.get(counter).getId());
+                listOfCarDto.add(carDto);
 
 //            System.out.println("*");
 
