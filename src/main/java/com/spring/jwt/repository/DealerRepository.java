@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface DealerRepository extends JpaRepository<Dealer, Integer> {
     void deleteById(int dealerId);
+
     public Optional<Dealer> findByEmail(String email);
 
 

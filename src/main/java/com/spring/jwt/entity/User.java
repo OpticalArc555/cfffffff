@@ -6,6 +6,7 @@ import com.spring.jwt.dto.DealerDto;
 import com.spring.jwt.dto.RegisterDto;
 import com.spring.jwt.dto.UserProfileDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,13 +25,14 @@ public class User {
     @SequenceGenerator(name = "user_id_generator", initialValue = 1000)
     private Integer id;
 
-
+    @NotBlank(message = "Email cannot be blank")
     @Column(name = "email", nullable = false, length = 250)
     private String email;
 
     @Column(name = "mobile_no")
     private String mobileNo;
 
+    @NotBlank(message = "Password cannot be blank")
     @Column(name = "password", nullable = false, length = 250)
     private String password;
 

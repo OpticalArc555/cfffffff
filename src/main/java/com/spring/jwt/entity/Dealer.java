@@ -3,6 +3,8 @@ package com.spring.jwt.entity;
 
 import com.spring.jwt.dto.DealerDto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.util.LinkedHashSet;
@@ -21,9 +23,9 @@ public class Dealer {
     @Column(name = "Dealer_id")
     private Integer id;
 
+    @NotBlank (message = "Address cannot be blank")
     @Column(name = "address")
     private String address;
-
 
     @Column(name = "area", nullable = false, length = 45)
     private String area;
@@ -37,12 +39,15 @@ public class Dealer {
     @Column(name = "last_name", length = 45)
     private String lastName;
 
+    @NotBlank(message = "Mobile number cannot be blank")
+    @Pattern(regexp = "[0-9]{10}", message = "Invalid mobile number format")
     @Column(name = "mobile_no", nullable = false, length = 45)
     private String mobileNo;
 
     @Column(name = "shop_name", nullable = false, length = 250)
     private String shopName;
-    @Column(name = "Email",nullable = false)
+
+    @NotBlank(message = "Email cannot be blank")
     private String email;
 
     private long dealerDocumentPhoto;
