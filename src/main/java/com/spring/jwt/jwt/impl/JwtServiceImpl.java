@@ -1,14 +1,15 @@
 package com.spring.jwt.jwt.impl;
 
+import com.spring.jwt.entity.Dealer;
 import com.spring.jwt.exception.BaseException;
 import com.spring.jwt.jwt.JwtConfig;
 import com.spring.jwt.jwt.JwtService;
+import com.spring.jwt.repository.DealerRepository;
 import com.spring.jwt.security.UserDetailsCustom;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -24,6 +25,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -34,12 +36,15 @@ public class JwtServiceImpl implements JwtService {
 
     private final JwtConfig jwtConfig;
 
+    private final DealerRepository dealerRepository;
+
     private final UserDetailsService userDetailsService;
 
     @Autowired
-    public JwtServiceImpl(@Lazy JwtConfig jwtConfig, UserDetailsService userDetailsService) {
+    public JwtServiceImpl(@Lazy JwtConfig jwtConfig, UserDetailsService userDetailsService, DealerRepository dealerRepository) {
         this.jwtConfig = jwtConfig;
         this.userDetailsService = userDetailsService;
+        this.dealerRepository = dealerRepository;
     }
 
 
@@ -81,6 +86,13 @@ public class JwtServiceImpl implements JwtService {
         String inspectorProfileId=null;
 
         if (roles.contains("DEALER")) {
+
+            Optional<Dealer> byEmail = dealerRepository.findByEmail(userDetailsCustom.getUsername());
+            Boolean status = byEmail.get().getStatus();
+            if (!status) {
+                throw new BaseException(String.valueOf(HttpStatus.BAD_REQUEST.value()), "Your Account is Not Active Please Contact The Administrator");
+            }
+
             dealerId = userDetailsCustom.getDealerId();
             userId=userDetailsCustom.getUserId();
         } else if (roles.contains("USER")) {
@@ -150,6 +162,7 @@ public class JwtServiceImpl implements JwtService {
 
         return claims;
     }
+
 
 }
 

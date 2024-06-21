@@ -18,4 +18,6 @@ public interface IDocument {
     Object delete(Integer carId);
 
     Object getCarIdType(Integer carId, String docType);
+
+    public String deleteById(Integer documentId);
 }

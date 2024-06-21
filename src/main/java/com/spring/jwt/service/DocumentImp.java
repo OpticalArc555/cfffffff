@@ -12,6 +12,7 @@ import com.spring.jwt.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,7 +51,6 @@ public class DocumentImp implements IDocument {
             throw new RuntimeException("Document Not Found By Id");
         }
         return documentDetails;
-
 
     }
 
@@ -95,6 +95,17 @@ public class DocumentImp implements IDocument {
             throw new RuntimeException("Document Not Found By Car Id");
         }
         return document;
+    }
+
+    @Override
+    public String deleteById(Integer documentId) {
+        Optional<Document> document = documentRepo.findById(documentId);
+        if (document.isEmpty()){
+            throw new RuntimeException("Document Not Found By Id");
+
+        }
+        documentRepo.deleteById(documentId);
+        return "Document Deleted By Document Id";
     }
 
 }

@@ -54,7 +54,6 @@ public class AccountControllers {
             accountDTO.setStatus(requestDTO.getStatus());
             accountDTO.setOpeningBalance(requestDTO.getOpeningBalance());
 
-            // If you want to set LastUpdateTime to current time, you can do it here
             accountDTO.setLastUpdateTime(LocalDateTime.now());
 
             WalletAccountDTO createdAccount = accountService.createAccount(accountDTO);
