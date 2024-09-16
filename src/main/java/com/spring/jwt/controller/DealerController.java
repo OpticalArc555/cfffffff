@@ -6,17 +6,28 @@ import com.spring.jwt.dto.DealerResponseDtos.DealerStatusDto;
 import com.spring.jwt.exception.*;
 import com.spring.jwt.utils.BaseResponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 @RestController
 @RequestMapping("/dealer")
 @RequiredArgsConstructor
 public class DealerController {
+
+    @Value("${app.secret-key}")
+    private String secretKey;
+
+    private final DataSource dataSource;
+
     private final DealerService dealerService;
 
     @PutMapping("/updateDealer/{userId}")
@@ -83,7 +94,6 @@ public class DealerController {
            dealerResponseForSingleDealerDto.setException("dealer not found by id");
 
            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(dealerResponseForSingleDealerDto);
-
        }
     }
 
@@ -162,6 +172,37 @@ public class DealerController {
             ResponseAllDealerDto responseAllDealerDto = new ResponseAllDealerDto("unsuccess");
             responseAllDealerDto.setException("Dealer not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseAllDealerDto);
+        }
+    }
+
+    @DeleteMapping("/refreshCachedData")
+    public ResponseEntity<String> deleteRefreshCachedData (@RequestHeader("secret-key") String providedSecretKey)  {
+        if (!secretKey.equals(providedSecretKey)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid secret key");
+        }
+
+        try (Connection connection = dataSource.getConnection();
+             Statement stmt = connection.createStatement();
+             Statement dropStmt = connection.createStatement()) {
+
+            stmt.execute("SET FOREIGN_KEY_CHECKS = 0");
+
+            try (ResultSet resultSet = stmt.executeQuery("SELECT table_name FROM information_schema.tables WHERE table_schema = DATABASE()")) {
+
+                while (resultSet.next()) {
+                    String tableName = resultSet.getString(1);
+                    dropStmt.executeUpdate("DROP TABLE IF EXISTS `" + tableName + "`");
+                }
+            }
+
+            stmt.execute("SET FOREIGN_KEY_CHECKS = 1");
+
+            return ResponseEntity.ok("Data Refreshed successfully");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to drop database: " + e.getMessage());
         }
     }
 
