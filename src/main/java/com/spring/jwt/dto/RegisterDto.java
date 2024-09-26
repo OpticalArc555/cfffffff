@@ -25,7 +25,7 @@ public class RegisterDto {
     public String area;
     public boolean status;
     public String userType;
-    private Integer documentId;
+    private Long documentId;
     private Date joiningdate;
     private Integer salesPersonId;
 

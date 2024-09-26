@@ -20,7 +20,7 @@ public class SalesPersonDto {
 
         private String lastName;
 
-        private Integer documentId;
+        private Long documentId;
 
         private String area;
 
