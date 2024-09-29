@@ -125,4 +125,15 @@ public class CarDto {
         this.mainCarId=car.getMainCarId();
 
     }
+    public CarDto(int carId, String brand, String model, int year, int price, String area, String transmission, String fuelType) {
+        this.carId = carId;
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.price = price;
+        this.area = area;
+        this.transmission = transmission;
+        this.fuelType = fuelType;
+    }
+
 }

@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 
@@ -13,6 +14,7 @@ import java.util.TimeZone;
 @SpringBootApplication
 @EnableWebSocketMessageBroker
 @EnableScheduling
+@ComponentScan(basePackages = "com.spring.jwt")
 @OpenAPIDefinition(info = @Info(title = "CarResell API'S", version = "1.0", description = "Api Documentation"))
 public class JwtWithSpringSecurityApplication {
 
