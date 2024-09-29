@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +32,9 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
 
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
+
     private boolean setauthreq = true;
 
     @Override
@@ -45,11 +49,10 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if (!setauthreq) {
+        if ("prod".equals(activeProfile) && !setauthreq) {
             handleAccessBlocked(response);
             return;
         }
-
         String accessToken = request.getHeader(jwtConfig.getHeader());
 
         log.info("Start do filter once per request, {}", requestUri);
