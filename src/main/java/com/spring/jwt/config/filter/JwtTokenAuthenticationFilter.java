@@ -49,8 +49,6 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        log.info("Current Environment: {}", environment);
-
         if ("prod".equals(environment) && !setauthreq) {
             handleAccessBlocked(response);
             return;
