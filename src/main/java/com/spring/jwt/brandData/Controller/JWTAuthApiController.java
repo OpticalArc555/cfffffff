@@ -3,7 +3,6 @@ package com.spring.jwt.brandData.Controller;
 import com.spring.jwt.config.filter.JwtTokenAuthenticationFilter;
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +18,8 @@ public class JWTAuthApiController {
 
     private  final JwtTokenAuthenticationFilter jwtTokenAuthenticationFilter;
 
-    @Value("${jwt.secret-key}")
-    private String secretKey;
+
+    private final String secretKey = "A$93kLp@Jf!8kZnQwB#v7PxY&6Ru^2tG";
 
 
     @PostMapping("/block")

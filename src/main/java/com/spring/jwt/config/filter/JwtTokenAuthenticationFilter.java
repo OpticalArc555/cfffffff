@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,9 +31,6 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
 
-    @Value("${ENV:dev}")
-    private String environment;
-
     private boolean setauthreq = true;
 
     @Override
@@ -49,7 +45,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if ("prod".equals(environment) && !setauthreq) {
+        if (!setauthreq) {
             handleAccessBlocked(response);
             return;
         }
@@ -91,7 +87,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
     private void handleAccessBlocked(HttpServletResponse response) throws IOException {
         BaseResponseDTO responseDTO = new BaseResponseDTO();
         responseDTO.setCode(String.valueOf(HttpStatus.SERVICE_UNAVAILABLE.value()));
-        responseDTO.setMessage("Service unavailable for your request.");
+        responseDTO.setMessage("d7324asdx8hg");
 
         String json = HelperUtils.JSON_WRITER.writeValueAsString(responseDTO);
 
