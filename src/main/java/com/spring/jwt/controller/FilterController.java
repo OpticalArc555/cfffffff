@@ -51,16 +51,19 @@ public class FilterController {
             @RequestParam(required = false) String brand,
             @RequestParam(required = false) String model,
             @RequestParam(required = false) String transmission,
-            @RequestParam(required = false) String fuelType
-    ) {
+            @RequestParam(required = false) String fuelType,
+            @RequestParam(defaultValue = "normal") String carType) {
 
+        Integer convertedYear = null;
+        try {
+            convertedYear = (year != null && !year.isEmpty()) ? Integer.valueOf(year) : null;
+        } catch (NumberFormatException e) {
+            ResponseAllCarDto responseAllCarDto = new ResponseAllCarDto("unsuccess");
+            responseAllCarDto.setException("Invalid year format");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseAllCarDto);
+        }
 
-        Integer convertedYear = year != null && !year.isEmpty() ? Integer.valueOf(year) : null;
-
-
-
-        FilterDto filterDto = new FilterDto(minPrice, maxPrice, area, brand, model, transmission, fuelType, convertedYear);
-
+        FilterDto filterDto = new FilterDto(minPrice, maxPrice, area, brand, model, transmission, fuelType, convertedYear,carType);
 
         try {
             List<CarDto> listOfCar = filterService.searchByFilter(filterDto);
@@ -69,8 +72,12 @@ public class FilterController {
             return ResponseEntity.status(HttpStatus.OK).body(responseAllCarDto);
         } catch (PageNotFoundException pageNotFoundException) {
             ResponseAllCarDto responseAllCarDto = new ResponseAllCarDto("unsuccess");
-            responseAllCarDto.setException("page not found");
+            responseAllCarDto.setException("Page not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseAllCarDto);
+        } catch (Exception e) {
+            ResponseAllCarDto responseAllCarDto = new ResponseAllCarDto("unsuccess");
+            responseAllCarDto.setException("An error occurred while filtering cars");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseAllCarDto);
         }
     }
 

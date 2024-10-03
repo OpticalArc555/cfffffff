@@ -32,7 +32,6 @@ public class FilterServiceImpl implements FilterService {
 
     @Override
     public List<CarDto> searchByFilter(FilterDto filterDto) {
-
         Specification<Car> spec = (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -60,7 +59,9 @@ public class FilterServiceImpl implements FilterService {
             if (filterDto.getFuelType() != null && !filterDto.getFuelType().isEmpty()) {
                 predicates.add(criteriaBuilder.equal(root.get("fuelType"), filterDto.getFuelType()));
             }
-
+            if (filterDto.getCarType() != null && !filterDto.getCarType().isEmpty()) {
+                predicates.add(criteriaBuilder.equal(root.get("carType"), filterDto.getCarType()));
+            }
             Predicate statusPredicate = criteriaBuilder.or(
                     criteriaBuilder.equal(root.get("carStatus"), Status.ACTIVE),
                     criteriaBuilder.equal(root.get("carStatus"), Status.PENDING)
@@ -74,7 +75,7 @@ public class FilterServiceImpl implements FilterService {
 
         List<Car> carList = carRepo.findAll(spec);
         if (carList.isEmpty()) {
-            throw new CarNotFoundException("Cars Not found");
+            throw new PageNotFoundException("Page Not found");
         }
 
         List<CarDto> listOfCarDto = new ArrayList<>();
