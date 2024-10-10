@@ -1,11 +1,9 @@
 package com.spring.jwt.controller.DO;
 
 import com.spring.jwt.Interfaces.ProfilePhotoService1;
-import com.spring.jwt.dto.BidCarDto;
 import com.spring.jwt.dto.ProfilePhotoDto;
 import com.spring.jwt.dto.ResponceDto;
 import com.spring.jwt.dto.ResponseDto;
-import com.spring.jwt.entity.ProfilePhoto1;
 import com.spring.jwt.service.DOService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

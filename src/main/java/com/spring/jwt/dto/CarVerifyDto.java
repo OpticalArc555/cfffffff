@@ -4,8 +4,6 @@ import com.spring.jwt.entity.CarVerified;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Optional;
-
 @Data
 @NoArgsConstructor
 public class CarVerifyDto {

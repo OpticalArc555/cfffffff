@@ -1,7 +1,5 @@
 package com.spring.jwt.Bidding.DTO;
 
-import com.spring.jwt.dto.InspectorProfileDto;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -109,6 +109,7 @@ public class Car {
     @Column(name = "transmission", length = 45)
     private String transmission;
 
+
     @Column(name = "year")
     private int year;
 

@@ -147,6 +147,7 @@ public class UserServiceImpl implements UserService {
             throw new BaseException(String.valueOf(HttpStatus.BAD_REQUEST.value()), "Data must not be empty");
         }
 
+
         User user = userRepository.findByEmail(registerDto.getEmail());
         if (!ObjectUtils.isEmpty(user)) {
             throw new UserAlreadyExistException(String.valueOf(HttpStatus.BAD_REQUEST.value()), "Username already exists !!");

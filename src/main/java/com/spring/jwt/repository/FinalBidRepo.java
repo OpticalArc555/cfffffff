@@ -2,7 +2,6 @@ package com.spring.jwt.repository;
 
 import com.spring.jwt.entity.Final1stBid;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 

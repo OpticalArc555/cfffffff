@@ -2,9 +2,8 @@ package com.spring.jwt.userForm.Dto;
 
 import lombok.Data;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 @Data
 public class userFormDtoPost {
 

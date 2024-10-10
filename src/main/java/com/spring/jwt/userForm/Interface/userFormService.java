@@ -2,7 +2,6 @@ package com.spring.jwt.userForm.Interface;
 
 import com.spring.jwt.userForm.Dto.userFormDto;
 import com.spring.jwt.userForm.Dto.userFormDtoPost;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

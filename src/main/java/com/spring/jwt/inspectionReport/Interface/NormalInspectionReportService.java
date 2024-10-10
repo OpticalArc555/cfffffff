@@ -1,5 +1,4 @@
 package com.spring.jwt.inspectionReport.Interface;
-import com.spring.jwt.inspectionReport.Dto.InspectionReportDto;
 import com.spring.jwt.inspectionReport.Dto.NormalInspectionReportDto;
 
 import java.util.List;

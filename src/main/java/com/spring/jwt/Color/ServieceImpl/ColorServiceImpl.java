@@ -1,10 +1,10 @@
 package com.spring.jwt.Color.ServieceImpl;
 
+import com.spring.jwt.Color.ColorNotFoundException;
 import com.spring.jwt.Color.Dto.ColorDto;
 import com.spring.jwt.Color.Dto.OneColorDto;
 import com.spring.jwt.Color.DuplicateColorException;
 import com.spring.jwt.Color.Entity.Color;
-import com.spring.jwt.Color.ColorNotFoundException;
 import com.spring.jwt.Color.Repo.ColorRepository;
 import com.spring.jwt.Color.Service.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +20,7 @@ public class ColorServiceImpl implements ColorService {
     @Autowired
     private ColorRepository colorRepository;
 
+    // Create a new color
     @Override
     public Color createColor(ColorDto colorDto) {
         // Check if color already exists

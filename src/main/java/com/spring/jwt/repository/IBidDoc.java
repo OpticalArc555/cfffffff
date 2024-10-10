@@ -1,8 +1,6 @@
 package com.spring.jwt.repository;
 
-import com.spring.jwt.dto.BidCarDto;
 import com.spring.jwt.entity.BidCarPhoto;
-import com.spring.jwt.entity.Document;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

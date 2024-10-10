@@ -4,18 +4,15 @@ import com.spring.jwt.Interfaces.FinalBidService;
 import com.spring.jwt.dto.FinalBidDto;
 import com.spring.jwt.entity.BidCars;
 import com.spring.jwt.entity.Final1stBid;
-import com.spring.jwt.entity.PlacedBid;
 import com.spring.jwt.entity.User;
 import com.spring.jwt.exception.*;
 import com.spring.jwt.repository.BidCarsRepo;
 import com.spring.jwt.repository.FinalBidRepo;
-import com.spring.jwt.repository.PlacedBidRepo;
 import com.spring.jwt.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
