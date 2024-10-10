@@ -9,7 +9,6 @@ import com.spring.jwt.exception.DealerNotFoundException;
 import com.spring.jwt.exception.PageNotFoundException;
 import com.spring.jwt.repository.CarRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

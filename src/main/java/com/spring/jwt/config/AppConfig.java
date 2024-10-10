@@ -28,6 +28,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -136,7 +137,9 @@ public class AppConfig {
                 .requestMatchers("/userFormController/**").permitAll()
                 .requestMatchers("/saveCar/**").permitAll()
                 .requestMatchers("/ProfilePhoto/**").permitAll()
-                .requestMatchers("/colors/**").permitAll()
+                .requestMatchers("/colors/**").permitAll() 
+                .requestMatchers("/b2b/**").permitAll()
+                .requestMatchers("/b2bConfirm/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .authenticationManager(manager)

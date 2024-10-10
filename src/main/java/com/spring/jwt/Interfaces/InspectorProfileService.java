@@ -5,8 +5,6 @@ import com.spring.jwt.dto.PasswordChange;
 import com.spring.jwt.utils.BaseResponseDTO;
 import org.springframework.data.domain.Page;
 
-import java.util.List;
-
 public interface InspectorProfileService {
     public String updateProfile(InspectorProfileDto inspectorProfileDto, Integer InspectorProfileId);
 

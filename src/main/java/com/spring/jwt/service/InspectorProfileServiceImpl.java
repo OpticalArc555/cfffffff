@@ -1,12 +1,10 @@
 package com.spring.jwt.service;
 
 import com.spring.jwt.Interfaces.InspectorProfileService;
-import com.spring.jwt.controller.PlaceBidController;
 import com.spring.jwt.dto.InspectorProfileDto;
 import com.spring.jwt.dto.PasswordChange;
 import com.spring.jwt.entity.InspectorProfile;
 import com.spring.jwt.entity.User;
-import com.spring.jwt.entity.Userprofile;
 import com.spring.jwt.exception.DuplicateRecordException;
 import com.spring.jwt.exception.InvalidPasswordException;
 import com.spring.jwt.exception.PageNotFoundException;
@@ -22,7 +20,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -2,7 +2,6 @@ package com.spring.jwt.controller;
 
 
 import com.spring.jwt.dto.FinalBidDto;
-import com.spring.jwt.dto.ResponceDto;
 import com.spring.jwt.dto.ResponseDto;
 import com.spring.jwt.entity.Final1stBid;
 import com.spring.jwt.exception.*;

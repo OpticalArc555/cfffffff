@@ -1,8 +1,6 @@
 package com.spring.jwt.dto.BeadingCAR;
 
 import com.spring.jwt.entity.BeadingCAR;
-import com.spring.jwt.entity.Status;
-import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.LocalDate;

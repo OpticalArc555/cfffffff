@@ -1,7 +1,6 @@
 package com.spring.jwt.inspectionReport.serviceImpl;
 
 import com.spring.jwt.entity.BeadingCAR;
-import com.spring.jwt.exception.DealerNotFoundException;
 import com.spring.jwt.exception.UserNotFoundExceptions;
 import com.spring.jwt.inspectionReport.Dto.InspectionReportDto;
 import com.spring.jwt.inspectionReport.Interface.InspectionReportService;
@@ -10,7 +9,6 @@ import com.spring.jwt.inspectionReport.excepation.InspectionReportAlreadyExistsE
 import com.spring.jwt.inspectionReport.excepation.InspectionReportFoundException;
 import com.spring.jwt.inspectionReport.repo.InspectionReportRepository;
 import com.spring.jwt.repository.BeadingCarRepo;
-import com.spring.jwt.repository.DealerRepository;
 import com.spring.jwt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

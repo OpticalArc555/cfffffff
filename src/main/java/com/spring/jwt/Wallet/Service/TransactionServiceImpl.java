@@ -7,7 +7,6 @@ import com.spring.jwt.Wallet.Entity.WalletAccount;
 import com.spring.jwt.Wallet.Interface.AccountService;
 import com.spring.jwt.Wallet.Interface.TransactionService;
 import com.spring.jwt.Wallet.Repo.TransactionRepository;
-import com.spring.jwt.entity.User;
 import com.spring.jwt.exception.InsufficientBalanceException;
 import com.spring.jwt.exception.ResourceNotFoundException;
 import com.spring.jwt.exception.TransactionNotFoundException;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

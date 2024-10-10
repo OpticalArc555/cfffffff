@@ -1,6 +1,5 @@
 package com.spring.jwt.inspectionReport.Dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.util.Date;

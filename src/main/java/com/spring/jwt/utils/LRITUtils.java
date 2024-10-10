@@ -1,12 +1,11 @@
 package com.spring.jwt.utils;
 
 import com.spring.jwt.entity.Role;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 
 import java.util.ArrayList;
 import java.util.List;

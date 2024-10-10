@@ -1,14 +1,11 @@
 package com.spring.jwt.service;
 
 import com.spring.jwt.Interfaces.IDealerPhoto;
-import com.spring.jwt.entity.Dealer;
 import com.spring.jwt.entity.DocumentPhoto;
 import com.spring.jwt.repository.DealerRepository;
 import com.spring.jwt.repository.DocumentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class DealerDocumentImp implements IDealerPhoto {

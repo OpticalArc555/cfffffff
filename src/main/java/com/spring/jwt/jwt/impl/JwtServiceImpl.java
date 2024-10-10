@@ -8,7 +8,6 @@ import com.spring.jwt.exception.BaseException;
 import com.spring.jwt.jwt.JwtConfig;
 import com.spring.jwt.jwt.JwtService;
 import com.spring.jwt.repository.DealerRepository;
-import com.spring.jwt.repository.InspectorProfileRepo;
 import com.spring.jwt.repository.UserRepository;
 import com.spring.jwt.security.UserDetailsCustom;
 import io.jsonwebtoken.*;
@@ -27,7 +26,6 @@ import org.springframework.util.ObjectUtils;
 
 import java.security.Key;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;

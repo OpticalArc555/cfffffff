@@ -7,7 +7,6 @@ import com.spring.jwt.entity.SalesPerson;
 import com.spring.jwt.entity.User;
 import com.spring.jwt.exception.BaseException;
 import com.spring.jwt.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;

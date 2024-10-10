@@ -3,9 +3,6 @@ package com.spring.jwt.Interfaces;
 import com.spring.jwt.dto.BeadingCAR.BeadingCARDto;
 import com.spring.jwt.dto.BeadingCAR.BeadingCarWithInsDto;
 import com.spring.jwt.dto.BidCarsDTO;
-import com.spring.jwt.dto.CarDto;
-import com.spring.jwt.dto.FilterDto;
-import com.spring.jwt.entity.Status;
 
 import java.util.List;
 

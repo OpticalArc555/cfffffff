@@ -1,11 +1,11 @@
 package com.spring.jwt.brandData.servicesImpl;
 
-import com.spring.jwt.brandData.Interface.BrandDataService;
 import com.spring.jwt.brandData.Dto.BrandDataDto;
 import com.spring.jwt.brandData.Dto.onlyBrandDto;
 import com.spring.jwt.brandData.Entity.BrandData;
-import com.spring.jwt.brandData.exception.BrandNotFoundException;
+import com.spring.jwt.brandData.Interface.BrandDataService;
 import com.spring.jwt.brandData.Reposiory.BrandDataRepository;
+import com.spring.jwt.brandData.exception.BrandNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

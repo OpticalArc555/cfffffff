@@ -3,6 +3,7 @@ package com.spring.jwt.dto;
 import com.spring.jwt.entity.BeadingCAR;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor

@@ -1,12 +1,13 @@
 package com.spring.jwt.service;
 
 import com.spring.jwt.Interfaces.PlacedBidService;
-import com.spring.jwt.Wallet.Entity.WalletAccount;
 import com.spring.jwt.Wallet.Repo.AccountRepository;
 import com.spring.jwt.dto.BeedingDtos.PlacedBidDTO;
-import com.spring.jwt.dto.BiddingTimerRequestDTO;
 import com.spring.jwt.dto.FinalBidDto;
-import com.spring.jwt.entity.*;
+import com.spring.jwt.entity.BidCars;
+import com.spring.jwt.entity.FinalBid;
+import com.spring.jwt.entity.PlacedBid;
+import com.spring.jwt.entity.User;
 import com.spring.jwt.exception.*;
 import com.spring.jwt.repository.BidCarsRepo;
 import com.spring.jwt.repository.FinalBidRepository;
@@ -16,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -25,8 +25,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

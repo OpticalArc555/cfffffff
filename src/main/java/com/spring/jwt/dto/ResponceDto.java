@@ -13,4 +13,8 @@ public class ResponceDto {
         this.message = message;
         this.object = object;
     }
+
+    public ResponceDto() {
+
+    }
 }

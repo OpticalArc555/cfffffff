@@ -1,6 +1,7 @@
 package com.spring.jwt.dto;
 
 import lombok.Data;
+
 import java.util.List;
 
 @Data

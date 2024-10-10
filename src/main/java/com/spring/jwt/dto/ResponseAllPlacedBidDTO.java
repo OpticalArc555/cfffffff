@@ -1,9 +1,9 @@
 package com.spring.jwt.dto;
 
-import java.util.List;
-
 import com.spring.jwt.dto.BeedingDtos.PlacedBidDTO;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ResponseAllPlacedBidDTO {

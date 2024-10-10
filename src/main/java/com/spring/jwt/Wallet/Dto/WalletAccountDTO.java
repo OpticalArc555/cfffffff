@@ -1,7 +1,5 @@
 package com.spring.jwt.Wallet.Dto;
 
-import com.spring.jwt.dto.UserDTO;
-import com.spring.jwt.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 

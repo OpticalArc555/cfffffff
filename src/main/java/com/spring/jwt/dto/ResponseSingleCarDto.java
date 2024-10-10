@@ -26,6 +26,10 @@ public class ResponseSingleCarDto {
     public ResponseSingleCarDto(String unsuccess, String s) {
     }
 
+    public ResponseSingleCarDto() {
+
+    }
+
     // Constructor for error response with exception
 
 

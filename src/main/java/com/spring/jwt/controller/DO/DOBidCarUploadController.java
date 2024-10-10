@@ -4,7 +4,6 @@ import com.spring.jwt.Interfaces.IBidPhoto;
 import com.spring.jwt.dto.BidCarDto;
 import com.spring.jwt.dto.ResponceDto;
 import com.spring.jwt.dto.ResponseDto;
-import com.spring.jwt.repository.IBidDoc;
 import com.spring.jwt.service.DOService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

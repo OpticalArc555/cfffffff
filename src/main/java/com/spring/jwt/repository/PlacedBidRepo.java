@@ -1,6 +1,5 @@
 package com.spring.jwt.repository;
 
-import com.spring.jwt.dto.FinalBidDto;
 import com.spring.jwt.entity.PlacedBid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
