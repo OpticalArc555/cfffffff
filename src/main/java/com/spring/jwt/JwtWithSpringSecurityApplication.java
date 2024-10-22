@@ -31,6 +31,7 @@ public class JwtWithSpringSecurityApplication {
 		System.err.println("*********  *           *               *     *     *********  *   *       *   " );
 		System.err.println("*       *  *           *               *     *     *       *  *    *      *   " );
 		System.err.println("*       *  *        *******       *****      *     *       *  *     *     *   " );
+
 	}
 
 
